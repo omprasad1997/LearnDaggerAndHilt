@@ -6,11 +6,11 @@ import javax.inject.Named
 
 
 @Module
-class NotificationServiceModule(var retryCount:Int) {
+class NotificationServiceModule {
 
     @MessageQualifier
     @Provides
-    fun getMessageService() : NotificationService{
+    fun getMessageService(retryCount:Int) : NotificationService{
         return MessageService(retryCount)
     }
 
