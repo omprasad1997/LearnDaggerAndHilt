@@ -25,9 +25,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        val component = (application as UserApplication).userRegistrationComponentNew
-        component.inject(this)
-        Log.d("TAG", "$emailService $emailService1")
+
+        val appComponent = (application as UserApplication).appComponent
+        val userRegistrationComponent = DaggerUserRegistrationComponentNew.factory().create(3,appComponent)
+        userRegistrationComponent.inject(this)
+
         userRegistrationService.registerUser("james.c.mcreynolds@example-pet-store.com", "11111")
     }
 }

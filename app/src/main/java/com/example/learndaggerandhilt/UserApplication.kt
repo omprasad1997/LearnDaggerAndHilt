@@ -1,16 +1,16 @@
 package com.example.learndaggerandhilt
 
 import android.app.Application
-import com.example.learndaggerandhilt.chezzycode.DaggerUserRegistrationComponentNew
-import com.example.learndaggerandhilt.chezzycode.UserRegistrationComponentNew
+import com.example.learndaggerandhilt.chezzycode.AppComponent
+import com.example.learndaggerandhilt.chezzycode.DaggerAppComponent
 
 class UserApplication : Application() {
 
-    lateinit var userRegistrationComponentNew: UserRegistrationComponentNew
+    lateinit var appComponent: AppComponent
 
     override fun onCreate() {
         super.onCreate()
 
-        userRegistrationComponentNew = DaggerUserRegistrationComponentNew.factory().create(3)
+        appComponent = DaggerAppComponent.builder().build()
     }
 }

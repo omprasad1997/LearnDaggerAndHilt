@@ -5,13 +5,13 @@ import dagger.BindsInstance
 import dagger.Component
 
 
-@ApplicationScope
-@Component(modules = [UserRepositoryModule::class, NotificationServiceModule::class])
+@ActivityScope
+@Component(dependencies = [AppComponent::class],modules = [UserRepositoryModule::class, NotificationServiceModule::class])
 interface UserRegistrationComponentNew {
     fun inject(mainActivity: MainActivity)
 
     @Component.Factory
     interface Factory{
-        fun create(@BindsInstance retryCount : Int) : UserRegistrationComponentNew
+        fun create(@BindsInstance retryCount : Int, appComponent: AppComponent) : UserRegistrationComponentNew
     }
 }
