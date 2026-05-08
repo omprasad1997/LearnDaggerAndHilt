@@ -3,6 +3,7 @@ package com.example.learndaggerandhilt
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import com.example.learndaggerandhilt.chezzycode.DaggerUserRegistrationComponentNew
 import com.example.learndaggerandhilt.chezzycode.EmailService
 import com.example.learndaggerandhilt.chezzycode.UserRegistrationService
 import javax.inject.Inject
@@ -24,7 +25,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val appComponent = (application as UserApplication).appComponent
-        val userRegistrationComponent = appComponent.getUserRegistrationComponentBuilder().retryCount(3).build()
+        val userRegistrationComponent = DaggerUserRegistrationComponentNew
+            .builder()
+            .appComponent(appComponent)
+            .retryCount(3)
+            .build()
+
         userRegistrationComponent.inject(this)
 
         userRegistrationService.registerUser("james.c.mcreynolds@example-pet-store.com", "11111")
