@@ -7,5 +7,6 @@ import dagger.Module
 abstract class UserRepositoryModule {
 
     @Binds
+    @ApplicationScope
     abstract fun getSQLRepository(sqlRepository: SQLRepository) : UserRepository
 }

@@ -8,6 +8,7 @@ import javax.inject.Named
 @Module
 class NotificationServiceModule {
 
+    @ApplicationScope
     @MessageQualifier
     @Provides
     fun getMessageService(retryCount:Int) : NotificationService{
