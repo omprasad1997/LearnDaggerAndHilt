@@ -1,6 +1,8 @@
 package com.example.learndaggerandhilt.chezzycode
 
 import com.example.learndaggerandhilt.MainActivity
+import dagger.BindsInstance
+import dagger.Component
 import dagger.Subcomponent
 
 
@@ -9,8 +11,9 @@ import dagger.Subcomponent
 interface UserRegistrationComponentNew {
     fun inject(mainActivity: MainActivity)
 
-//    @Subcomponent.Factory
-//    interface Factory{
-//        fun create(@BindsInstance retryCount : Int) : UserRegistrationComponentNew
-//    }
+    @Subcomponent.Builder
+    interface Builder{
+        fun build() : UserRegistrationComponentNew
+        fun retryCount(@BindsInstance retryCount : Int) : Builder
+    }
 }
