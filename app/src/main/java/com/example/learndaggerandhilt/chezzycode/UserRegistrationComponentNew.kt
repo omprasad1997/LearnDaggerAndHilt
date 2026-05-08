@@ -5,6 +5,7 @@ import dagger.BindsInstance
 import dagger.Component
 
 
+@ApplicationScope
 @Component(modules = [UserRepositoryModule::class, NotificationServiceModule::class])
 interface UserRegistrationComponentNew {
     fun inject(mainActivity: MainActivity)
